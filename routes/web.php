@@ -13,4 +13,7 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('information.create');
+
+Route::get('/information', 'InformationController@index')->name('information.index');
+Route::post('/information/save','InformationController@store')->name('information.store');
