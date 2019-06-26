@@ -39,7 +39,6 @@ class InformationRequest extends FormRequest
             'telephone.required' => 'El Telefono es requerido',
             'msg.required' => 'El mensaje es requerido',
             'name.regex' => 'Nombre no debe contener caracteres especiales',
-
         ];
     }
 }

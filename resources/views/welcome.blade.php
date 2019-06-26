@@ -54,7 +54,7 @@
                               <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label">Mensaje</label>
                                 <div class="col-lg-9">
-                                    <textarea name="msg" v-model="form.msg" @keyup="notTag" id="msg" cols="30" rows="10" class="form-control" placeholder="ingrese mensaje"></textarea>
+                                    <textarea name="msg" v-model="form.msg" id="msg" cols="30" rows="10" class="form-control" placeholder="ingrese mensaje"></textarea>
                                      <small v-if="showError" class="text-danger">@{{ msg_error }}</small>
                                 </div>
                               </div>
@@ -108,7 +108,9 @@
                         register() {
 
                                 let url = '{{ route('information.store') }}';
-                              
+                            
+                                this.form.msg = this.form.msg.replace(/(<([^>]+)>)/ig, "");
+                                this.form.email = this.form.email.replace(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,"");
 
                                 axios.post(url, this.form)
                                         .then( (res) => {
@@ -142,7 +144,7 @@
                             window.location.href="{{ route('information.index') }}";
                         },
                         notTag() {
-                                this.form.msg.replace(/<[^>]*>/g, ' ');
+                          
                                 
                         },
                         onlyNumber() {
